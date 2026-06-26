@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Kudriavtcev Alexandr — Software Engineer / Data Engineer</title>
+<style>
+  /* ------------------------------------------------------------------
+     Reverse-engineered from the source PDF (A4, Arial).
+     Geometry is expressed in points (pt) to match the PDF 1:1, so the
+     render is identical whether opened in a browser or printed via
+     Puppeteer/Playwright (page.pdf({ format: 'A4', printBackground: true })).
+  ------------------------------------------------------------------ */
+
+  :root {
+    --ink:        #000000;  /* primary text                          */
+    --muted:      #2a3137;  /* company / secondary headings          */
+    --link:       #000080;  /* navy links (email, websites)          */
+    --rule:       #000000;  /* section divider lines                 */
+
+    --gutter:     40pt;     /* left content edge in the PDF          */
+    --gutter-r:   32pt;     /* right content edge in the PDF         */
+  }
+
+  * { box-sizing: border-box; }
+
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #525659;            /* viewport backdrop (screen only) */
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* A4 sheet ----------------------------------------------------------*/
+  .page {
+    position: relative;
+    width: 210mm;
+    min-height: 297mm;
+    margin: 16px auto;
+    background: #ffffff;
+    padding: 34pt var(--gutter-r) 40pt var(--gutter);
+    box-shadow: 0 2px 14px rgba(0, 0, 0, .35);
+  }
+
+  /* ---------------------------------------------------------------- */
+  /* Header                                                           */
+  /* ---------------------------------------------------------------- */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .name {
+    font-size: 14pt;
+    line-height: 1.15;
+    margin: 0;
+  }
+
+  .role {
+    font-size: 13pt;
+    font-weight: 700;
+    margin: 3pt 0 0;
+  }
+  .role .role-sec { font-size: 12pt; }   /* "Data Engineer" is 1pt smaller in the PDF */
+
+  .location {
+    display: flex;
+    align-items: center;
+    gap: 5pt;
+    font-size: 12pt;
+    margin-top: 3pt;
+  }
+
+  .contact {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6pt;
+    font-size: 12pt;
+    padding-top: 1pt;
+  }
+  .contact .row {
+    display: flex;
+    align-items: center;
+    gap: 7pt;
+  }
+
+  .contact a,
+  a.link {
+    color: var(--link);
+    text-decoration: underline;
+  }
+  .contact .row.plain { color: var(--ink); }
+
+  /* icons ----------------------------------------------------------- */
+  .icon {
+    flex: 0 0 auto;
+    width: 13pt;
+    height: 13pt;
+    fill: currentColor;
+  }
+  .location .icon { width: 12pt; height: 12pt; }
+
+  /* ---------------------------------------------------------------- */
+  /* Sections                                                         */
+  /* ---------------------------------------------------------------- */
+  .rule {
+    border: none;
+    border-top: 0.8pt solid var(--rule);
+    margin: 11pt 0 0;
+  }
+
+  h2.section {
+    font-size: 13pt;
+    font-weight: 700;
+    margin: 6pt 0 0;
+  }
+
+  p { margin: 0; }
+
+  .body p,
+  .skills p {
+    font-size: 11pt;
+    line-height: 1.318;   /* 14.5pt leading on 11pt text, as in the PDF */
+    margin: 0;            /* items flow with no extra gap, like the source */
+  }
+  .body { margin-top: 5pt; }
+  .skills { margin-top: 5pt; }
+
+  /* Experience ------------------------------------------------------ */
+  .job { margin-top: 9pt; }
+  .job:first-child { margin-top: 6pt; }
+
+  .job-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12pt;
+  }
+  .job-title {
+    font-size: 12pt;
+    font-weight: 700;
+    color: var(--muted);
+  }
+  .job-date {
+    font-size: 12pt;
+    font-style: italic;
+    white-space: nowrap;
+  }
+  .company {
+    font-size: 12pt;
+    color: var(--muted);
+    margin-top: 3pt;
+  }
+  .company .org { font-weight: 700; }
+
+  .job .bullets { margin-top: 5pt; }
+  .job .bullets p {
+    font-size: 11pt;
+    line-height: 1.318;
+    margin: 0;            /* continuous leading, matching the PDF */
+  }
+
+  /* Education ------------------------------------------------------- */
+  .edu {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12pt;
+    margin-top: 6pt;
+    font-size: 12pt;
+    color: var(--muted);
+  }
+  .edu .edu-date { color: var(--ink); white-space: nowrap; }
+
+  /* Languages ------------------------------------------------------ */
+  .languages {
+    font-size: 12pt;
+    margin-top: 6pt;
+  }
+
+  /* Screen-only niceties; ignored when printing ---------------------*/
+  @media print {
+    html, body { background: #ffffff; }
+    .page { margin: 0; box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+  <main class="page">
+
+    <!-- ============================ HEADER ============================ -->
+    <header class="header">
+      <div class="identity">
+        <h1 class="name">Kudriavtcev Alexandr</h1>
+        <p class="role">Software Engineer / <span class="role-sec">Data Engineer</span></p>
+        <p class="location">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/>
+          </svg>
+          <span>Israel | Open to relocation within Europe</span>
+        </p>
+      </div>
+
+      <div class="contact">
+        <div class="row plain">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M7 2h10a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm5 17.2a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2zM7 4v13h10V4H7z"/>
+          </svg>
+          <span>+972 55 7707057</span>
+        </div>
+        <div class="row">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M2 5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5zm2.4.5 7.6 5 7.6-5H4.4zM20 7.3l-7.5 4.9a1 1 0 0 1-1 0L4 7.3V19h16V7.3z"/>
+          </svg>
+          <a href="mailto:kudria15@gmail.com">kudria15@gmail.com</a>
+        </div>
+        <div class="row">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1-.02-5zM3 9h4v12H3V9zm6 0h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95C20.4 8.75 22 10.7 22 14.1V21h-4v-6.2c0-1.48-.03-3.38-2.06-3.38-2.06 0-2.38 1.6-2.38 3.27V21H9V9z"/>
+          </svg>
+          <a class="link" href="https://www.linkedin.com/in/kudria/">www.linkedin.com/in/kudria/</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- ============================ ABOUT ============================ -->
+    <hr class="rule" />
+    <h2 class="section">About</h2>
+    <section class="body">
+      <p>Python Developer with 8+ years of experience specializing in high-load backend systems and ETL
+        pipelines. I am a natural problem-solver who enjoys staying current with new technologies. Proven
+        ability to lead projects from concept to production, including a high-loaded web analytics service.
+        Experienced in designing and maintaining scalable data solutions using FastAPI, Django, Airflow,
+        and PySpark</p>
+    </section>
+
+    <!-- ============================ SKILLS =========================== -->
+    <hr class="rule" />
+    <h2 class="section">Skills</h2>
+    <section class="skills">
+      <p>Web-development, Backend, REST, ETL,</p>
+      <p>Python, SQL, JavaScript, Django, FastAPI, Vue, SqlAlchemy, Celery, Airflow,</p>
+      <p>Postgresql, Hadoop, PySpark, ClickHouse, Kafka, Redis,</p>
+      <p>Docker, k8s, Gitlab CI/CD</p>
+    </section>
+
+    <!-- ========================== EXPERIENCE ========================= -->
+    <hr class="rule" />
+    <h2 class="section">Experience</h2>
+    <section class="experience">
+
+      <article class="job">
+        <div class="job-head">
+          <span class="job-title">Python Developer / Data Engineer</span>
+          <span class="job-date">2023&nbsp;-&nbsp;present</span>
+        </div>
+        <p class="company"><span class="org">My.Games</span> - game developer and publisher,
+          <a class="link" href="https://my.games">my.games</a></p>
+        <div class="bullets">
+          <p>Engineered and maintained ETL processes, internal services, and monitoring systems, ensuring
+            high availability and rapid incident resolution for the BI/DWH ecosystem</p>
+          <p>Led the integration of OpenMetadata as the corporate data catalog, implementing lineage
+            tracking and improving data discoverability</p>
+          <p>Partnered with the infrastructure team to optimize performance and reliability, and refine
+            CI/CD pipelines</p>
+        </div>
+      </article>
+
+      <article class="job">
+        <div class="job-head">
+          <span class="job-title">Senior Python Backend Developer</span>
+          <span class="job-date">2021 - 2023</span>
+        </div>
+        <p class="company"><span class="org">Nedra</span> - software development,
+          <a class="link" href="https://nedra.digital">nedra.digital</a></p>
+        <div class="bullets">
+          <p>Backend development as part of a cross-functional team.</p>
+          <p>Participation in the full development cycle, from MVP to production-ready solutions.</p>
+          <p>Led the full development cycle of a Web Analytics Service, building a FastAPI backend with
+            SQLAlchemy and PostgreSQL that successfully scaled to handle over 2000 RPS in production</p>
+          <p>Decomposed monolithic application into microservices</p>
+          <p>Developed a corporate ERP system (Odoo), automating complex business workflows and reducing
+            manual operational overhead.</p>
+        </div>
+      </article>
+
+      <article class="job">
+        <div class="job-head">
+          <span class="job-title">Fullstack Python Developer</span>
+          <span class="job-date">2018 - 2021</span>
+        </div>
+        <p class="company"><span class="org">GoCream</span> - digital design studio,
+          <a class="link" href="https://gocream.com">gocream.com</a></p>
+        <div class="bullets">
+          <p>Acted as the lead backend developer, building secure and scalable REST APIs using Django and
+            DRF for Single Page Applications (SPA) websites.</p>
+          <p>Implemented complex integrations with external APIs and payment gateways, using Celery and
+            Redis for asynchronous task processing</p>
+          <p>Contributed to frontend modules (Vue.js) to ensure seamless integration with backend logic</p>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- ========================== EDUCATION ========================== -->
+    <hr class="rule" />
+    <h2 class="section">Education</h2>
+    <div class="edu">
+      <span>Saint Petersburg State University (Russia), Master's degree, Physics</span>
+      <span class="edu-date">2000 - 2007</span>
+    </div>
+
+    <!-- ========================== LANGUAGES ========================== -->
+    <hr class="rule" />
+    <h2 class="section">Languages</h2>
+    <p class="languages">English — Intermediate (B1), Russian – Native, Hebrew – Basic</p>
+
+  </main>
+</body>
+</html>
