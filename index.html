@@ -87,6 +87,12 @@
         
         /* Languages ------------------------------------------------------ */
         .languages { font-size: 12pt; margin-top: 6pt; }
+
+        /* Explicit page break marker for PDF rendering */
+        .page-break {
+            break-before: page;
+            page-break-before: always;
+        }
         
         /* Screen-only niceties; ignored when printing ---------------------*/
         @media print {
