@@ -1,13 +1,14 @@
 name: Deploy CV Page
 
 on:
-  push:
-    branches:
-      - master
-      - main
-  workflow_dispatch:
+  workflow_run:
+    workflows:
+      - Build CV PDF
+    types:
+      - completed
 
 permissions:
+  actions: read
   contents: read
   pages: write
   id-token: write
@@ -18,21 +19,49 @@ concurrency:
 
 jobs:
   deploy:
+    if: >
+      github.event.workflow_run.conclusion == 'success' &&
+      (github.event.workflow_run.head_branch == 'master' || github.event.workflow_run.head_branch == 'main')
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
 
       - name: Configure Pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
 
       - name: Prepare static site
         run: |
           mkdir -p site
           cp index.html site/index.html
+
+      - name: Download PDF artifact from build workflow
+        uses: actions/download-artifact@v8
+        with:
+          name: cv-pdf
+          path: site
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Normalize PDF path for Pages
+        run: |
+          shopt -s globstar nullglob
+          PDF_NAME="Aleksandr_Kudriavtcev_Software_Developer_CV.pdf"
+          candidates=(site/**/"$PDF_NAME")
+          if [ ${#candidates[@]} -eq 0 ]; then
+            echo "Expected PDF artifact file was not found"
+            exit 1
+          fi
+          src="${candidates[0]}"
+          dest="site/$PDF_NAME"
+          if [ "$src" != "$dest" ]; then
+            cp "$src" "$dest"
+          fi
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

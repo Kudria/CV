@@ -16,11 +16,13 @@ const browser = await chromium.launch();
 const page = await browser.newPage();
 
 await page.goto(`file://${inputPath}`, { waitUntil: "networkidle" });
+await page.emulateMedia({ media: "print" });
 
 await page.pdf({
   path: outputPath,
-  format: "A4",
+  preferCSSPageSize: true,
   printBackground: true,
+  scale: 0.98,
   margin: {
     top: "0",
     right: "0",
